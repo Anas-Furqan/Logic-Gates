@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wire-high: #22c55e;
+  --wire-low: #ef4444;
+  --wire-neutral: #6b7280;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Code/Expression styling */
+.expression-input {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 1.125rem;
+  letter-spacing: 0.025em;
+}
+
+/* Truth table styling */
+.truth-table {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.truth-table th,
+.truth-table td {
+  text-align: center;
+  padding: 0.5rem 1rem;
+}
+
+.truth-table tr.output-high {
+  background: rgba(34, 197, 94, 0.15);
+}
+
+/* K-Map styling */
+.kmap-cell {
+  transition: all 0.2s ease;
+}
+
+.kmap-cell:hover {
+  transform: scale(1.05);
+}
+
+/* Circuit canvas */
+.circuit-canvas {
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+}
+
+/* Wire animations */
+@keyframes signal-flow {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.wire-animated {
+  stroke-dasharray: 10, 10;
+  animation: signal-flow 0.5s linear infinite;
+}
+
+/* Gate hover effect */
+.gate-hover {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* Tooltip styling */
+.tooltip-content {
+  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tab panels */
+.tab-panel {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Loading spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Card animations */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Step indicator */
+.step-connector {
+  background: linear-gradient(90deg, var(--wire-high) 0%, var(--wire-low) 100%);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .expression-input {
+    font-size: 1rem;
+  }
+  
+  .truth-table th,
+  .truth-table td {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+}
